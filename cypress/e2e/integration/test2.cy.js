@@ -10,3 +10,5 @@ describe("Cypress Selectors", () => {
     // cy.get("[id $= box_2]").should("be.visible"); // end with
   });
 });
+
+test upload
