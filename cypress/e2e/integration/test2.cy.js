@@ -11,4 +11,3 @@ describe("Cypress Selectors", () => {
   });
 });
 
-test upload
