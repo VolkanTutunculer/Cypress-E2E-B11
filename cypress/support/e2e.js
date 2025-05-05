@@ -14,4 +14,15 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
+import '@4tw/cypress-drag-drop'
 import './commands'
+import 'cypress-real-events'
+
+beforeEach(() => {
+    cy.visit("https://www.techglobal-training.com/frontend/dynamic-elements");
+  });
+  
+  beforeEach(() => {
+    cy.visit("https://www.techglobal-training.com/frontend");
+  });  
+  
