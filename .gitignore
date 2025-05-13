@@ -4,4 +4,5 @@ dist/
 .DS_Store
 .idea
 cypress/videos/*
-notes/note1.txt
+cypress/screenshots/*
+cypress/downloads/*

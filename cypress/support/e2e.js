@@ -21,20 +21,20 @@ import 'cypress-real-events'
 // import spawn from 'child_process'
 
 
-// beforeEach(() => {
-//   cy.visit(`${Cypress.env('SITE_URL')}/frontend`)
-// })
+beforeEach(() => {
+  cy.visit(`${Cypress.env('SITE_URL')}/frontend`)
+})
 
-// before(() => {
-//   // exec('node index.js')
-//   // spawn('node index.js')
-//   //cy.exec('node index.js')
-//   // cy.exec('react run')
-// })
+before(() => {
+  // exec('node index.js')
+  // spawn('node index.js')
+  cy.exec('node index.js')
+  // cy.exec('react run')
+})
 
-// // after(() => {
-//   // exec('node index.js')
-//   // spawn('node index.js')
-//   // cy.exec('node index.js')
-//   // cy.exec('react stop')
-// // })
+// after(() => {
+  // exec('node index.js')
+  // spawn('node index.js')
+  // cy.exec('node index.js')
+  // cy.exec('react stop')
+// })
