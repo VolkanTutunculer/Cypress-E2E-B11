@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe("Cypress Selectors", () => {
+describe("Cypress Actions", () => {
   beforeEach(() => {
     cy.visit("https://www.techglobal-training.com/frontend");
     cy.contains(".card", "HTML Elements").click();
@@ -10,20 +10,16 @@ describe("Cypress Selectors", () => {
    * Visit the techglobal frontend page
    * Click and navigate to Html Elements page
    * Click on the Register button on the Html Elements Page
-   * Validate "You clicked on "Register" text is visible
+   * Validate "You clicked on “Register" text is visible
    * And click on the "Sign in" button
-   * Validate "You clicked on "Sign in"" text is visible
+   * Validate "You clicked on “Sign in”" text is visible
    */
   it("Click Action - click()", () => {
     cy.get("#register_button").click();
-    cy.get(".mt-1")
-      .should("be.visible")
-      .and("have.text", "You clicked on “Register”");
+    cy.get(".mt-1").should("have.text", "You clicked on “Register”");
 
     cy.get("#signin_button").click();
-    cy.get(".mt-1")
-      .should("be.visible")
-      .and("have.text", "You clicked on “Sign in”");
+    cy.get(".mt-1").should("have.text", "You clicked on “Sign in”");
 
     cy.get("#register_button")
       .click()
@@ -35,10 +31,11 @@ describe("Cypress Selectors", () => {
       .next()
       .should("have.text", "You clicked on “Sign in”");
   });
+
   it("Checkbox & Radio Buttons - check()", () => {
     // This assertion will not work, because '#apple_check' targets <label> web element
     // and this element is not the input itself, and it is not possible to get the input information from it
-    //cy.get("#apple_check").click().should("be.checked");
+    cy.get("#checkbox_1").click().should("be.checked");
 
     /**
      * cy.check() can only be called on :checkbox and :radio.
@@ -54,14 +51,17 @@ describe("Cypress Selectors", () => {
      * 4. Validate its unchecked
      */
 
-    cy.get("#checkbox_1")
-      .check()
-      .should("be.checked")
-      .uncheck()
-      .should("not.be.checked");
+    // cy.get('#checkbox_1').check().should('be.checked')
+    // cy.get('#checkbox_1').uncheck().should('not.be.checked')
+
+    cy.get('#checkbox_1').check()
+    .should('be.checked')
+    .uncheck()
+    .should('not.be.checked')
   });
 
   it("Checkbox & Radio Buttons - check() 2", () => {
+
     /**
      * 1. Check on the Tesla checkbox button
      * 2. Then Validate its checked
@@ -69,43 +69,42 @@ describe("Cypress Selectors", () => {
      * 4. Validate its unchecked
      */
 
-    cy.get("#checkbox_3")
-      .check()
-      .should("be.checked")
-      .uncheck()
-      .should("not.be.checked");
+    cy.get('#checkbox_3').check()
+    .should('be.checked')
+    .uncheck()
+    .should('not.be.checked')
   });
 
   it("Checkbox & Radio Buttons - check() 3", () => {
+
     /**
      * 1. Check on the Java radio button
-     * 2. Then Validate its checked
-     * 3. Check on the JavaScript radio button
-     * 4. Validate its checked while Java unchecked
+     * 2. Then validate its checked
+     * 3. Check JavaScript radio button
+     * 4. Validate its checked while Java is unchecked
      */
 
-    cy.get("#radio_1_option_1")
-      .should("not.be.checked")
+    cy.get('#radio_1_option_1')
+      .should('not.be.checked')
       .check()
-      .should("be.checked");
+      .should('be.checked');
 
-    cy.get("#radio_1_option_2")
-      .should("not.be.checked")
+    cy.get('#radio_1_option_2')
+      .should('not.be.checked')
       .check()
-      .should("be.checked");
+      .should('be.checked');
+  
+    cy.get('#radio_1_option_1')
+    .should('not.be.checked');
 
-    cy.get("#radio_1_option_1").should("not.be.checked");
   });
 
   it("Checkbox & Radio Buttons - check() 4 - Multiple elements", () => {
+
     cy.get('input[id^="radio_1"]')
-      .should("have.length", 3)
-      .each((el) => {
-        cy.wrap(el).check().should("be.checked");
-      });
+    .should('have.length', 3)
+    .each(($el) => {
+      cy.wrap($el).check().should('be.checked');
+    })
   });
-
-
-
-  
 });

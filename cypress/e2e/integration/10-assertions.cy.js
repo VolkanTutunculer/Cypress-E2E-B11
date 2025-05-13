@@ -1,6 +1,6 @@
-/// <reference types ="cypress"/>
+/// <reference types="cypress"/>
 
-describe("Cypress Assertions", () => {
+describe("Cypress Assertion", () => {
   beforeEach(() => {
     cy.visit("https://www.techglobal-training.com/");
   });
@@ -9,14 +9,14 @@ describe("Cypress Assertions", () => {
     cy.get('img[class^="Footer_logo"]')
       .scrollIntoView()
       //.should('exist')
-      //.and('be.visible');
+      //.and('be.visible')
       .and("have.attr", "alt", "Tech Global Logo");
   });
 
   it("Default Assertions 2", () => {
     cy.get("button")
       .contains("Mock Interviews")
-      //.should("be.enabled") // if it is clickable it means it is enable also
+      //.should('be.enabled')
       .click();
 
     cy.url().should("eq", "https://www.techglobal-training.com/login");
@@ -62,51 +62,42 @@ describe("Cypress Assertions", () => {
 
   it("Explicit Assertions with each() 1", () => {
     /*
-  Hover over Exercises Nav Item
-  Validate below option are visible, clickable and make sure their text are correct
-    Java Exercises
-    JS Exercises
-  */
+    Hover over Exercises Nav Item
+    Validate below option are visible, clickable, and make sure their text are correct
+      Java Exercises
+      JS Exercises
+    */
 
     const expectedOptions = ["Java Exercises", "JS Exercises"];
 
     cy.get("#dropdown-exercises").realHover();
 
-    // Primitive way ------------------------------------------------------------------
+    cy.get('a[id*="j"]').should('have.length', 2).each((el, index) => {
+      // Explicit assertions
+      expect(el).to.be.visible;
+      expect(el.text()).eq(expectedOptions[index]);
 
-    cy.get("#java-option")
-      .should("be.visible")
-      // .and('be.enabled')
-      .and("have.text", "Java Exercises");
+      // Implicit assertions
+      cy.wrap(el).should('be.visible').and('have.text', expectedOptions[index]);
+    })
 
-    cy.get("#js-option")
-      .should("be.visible")
-      // .and('be.enabled')
-      .and("have.text", "JS Exercises");
+    // Primitive way
+    // cy.get("#java-option")
+    //   .should("be.visible")
+    //   // .and("be.enabled")
+    //   .and("have.text", "Java Exercises");
 
-    // Proper way ------------------------------------------------------------------
-
-    cy.get('a[id*="j"]')
-      .should("have.length", 2)
-      .each((el, index) => {
-        // Explicit Assertions -- below is Jquery
-        expect(el).to.be.visible;
-        expect(el.text()).eq(expectedOptions[index]);
-
-        // Implicit Assertions
-        cy.wrap(el)
-          .should("be.visible")
-          .and("have.text", expectedOptions[index]);
-      });
+    // cy.get("#js-option")
+    //   .should("be.visible")
+    //   // .and("be.enabled")
+    //   .and("have.text", "JS Exercises");
   });
 
-  it("Explicit Assertions with each() 2", () => {
-    
+  it('Explicit Assertions with each() 2', () => {
     /*
-    Validate there 5 social media icon are visible in the footer
+    Validate there 5 social media icons are visible in the footer
     Validate all the links has "techglobal" in href attribute
-    Validate all the links has target attribute value is  "_blank"
+    Validate all the links has target attribute value is "_blank"
     */
-
   });
 });
