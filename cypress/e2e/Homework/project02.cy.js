@@ -6,6 +6,7 @@ describe("Login Validation", () => {
 
   let username = 'TechGlobal'
   let pass = 'Test1234'
+
   it("Test Case 01 - Validate the login form", () => {
     cy.get("label[for='username']").should(
       "have.text",
