@@ -3,13 +3,13 @@ import LoginPage from "../../pages/LoginPage";
 
 describe("Login Page Test", () => {
   beforeEach(() => {
-    cy.visit(`${Cypress.env("SITE_URL")}/frontend`);
+    cy.visit("https://www.techglobal-training.com/frontend");
     cy.clickCard("Login Function");
 
-    cy.fixture('example').then(function(data) {
-      this.username = data.username
-      this.password = data.password
-    })
+    cy.fixture("example").then(function (data) {
+      this.username = data.username;
+      this.password = data.password;
+    });
   });
 
   const loginPage = new LoginPage();
@@ -26,7 +26,7 @@ describe("Login Page Test", () => {
     cy.get("#success_lgn").should("be.visible");
   });
 
-  it("Login with POM", function() {
+  it("Login with POM", function () {
     // loginPage.userLogin(Cypress.env("UI_USERNAME"), Cypress.env("UI_PASSWORD"));
     loginPage.userLogin(this.username, this.password);
     loginPage.getSuccessMessage().should("be.visible");
@@ -39,9 +39,14 @@ describe("Login Page Test", () => {
    */
 
   it("Login with POM - Negative", () => {
-    loginPage.userLogin(Cypress.env("UI_USERNAME", 'WongUser'), Cypress.env("UI_PASSWORD", 'WrongPassword'));
-    loginPage.getErrorMessage().should("have.text", "Invalid Username entered!");
+    loginPage.userLogin(
+      Cypress.env("UI_USERNAME", "WongUser"),
+      Cypress.env("UI_PASSWORD", "WrongPassword")
+    );
+    loginPage
+      .getErrorMessage()
+      .should("have.text", "Invalid Username entered!");
 
-    loginPage.getLogo()
+    loginPage.getLogo();
   });
 });
