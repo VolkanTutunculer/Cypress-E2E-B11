@@ -17,8 +17,12 @@
 import './commands'
 import '@4tw/cypress-drag-drop'
 import 'cypress-real-events'
+import 'cypress-mochawesome-reporter/register';
 // import exec, { spawnSync } from 'child_process'
 // import spawn from 'child_process'
+
+const registerCypressGrep = require('@cypress/grep')
+registerCypressGrep()
 
 
 beforeEach(() => {
