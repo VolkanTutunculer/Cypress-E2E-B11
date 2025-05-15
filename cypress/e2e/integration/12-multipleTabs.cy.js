@@ -1,16 +1,16 @@
 /// <reference types="cypress"/>
 
-describe("Handling Multiple Windows", () => {
+describe('Handling Multiple Windows', () => {
   beforeEach(() => {
-    cy.visit("https://www.techglobal-training.com/frontend");
-    cy.clickCard("Multiple Windows");
-  });
+    cy.visit('https://www.techglobal-training.com/frontend')
+    cy.clickCard('Multiple Windows')
+  })
 
-  it("Tabs", () => {
-    cy.get("#microsoft").should("have.attr", "target", "_blank");
+  it('Tabs', () => {
+    cy.get('#microsoft').should('have.attr', 'target', '_blank')
 
-    cy.get("#microsoft").invoke("removeAttr", "target").click();
-  });
+    cy.get('#microsoft').invoke('removeAttr', 'target').click()
+  })
 
   /**
    * Go to https://techglobal-training.com/frontend/
@@ -32,4 +32,4 @@ describe("Handling Multiple Windows", () => {
   })
 
 
-});
+})

@@ -13,13 +13,13 @@
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
 
-Cypress.Commands.add("clickCard", (link) => {
-  cy.contains('.card, [class*="projectCard"]', link).click();
-});
+Cypress.Commands.add('clickCard', (link) => {
+  cy.contains('.card, [class*="projectCard"]', link).click()
+})
 
-Cypress.Commands.add("selectDropdown", (locator, option) => {
-  cy.get(locator).select(option);
-});
+Cypress.Commands.add('selectDropdown', (locator, option) => {
+  cy.get(locator).select(option)
+})
 
 /**
  * Create a Cypress function that will name 'login'
@@ -28,11 +28,11 @@ Cypress.Commands.add("selectDropdown", (locator, option) => {
  *
  * It will enter the user email, and name on Focus section and click on the submit button
  */
-Cypress.Commands.add("loginApp", (email, name) => {
-  cy.get('[name="email"]').type(email);
-  cy.get(".mb-3 > input").clear().type(name);
-  cy.get(".mb-3 + button").click();
-});
+Cypress.Commands.add('loginApp', (email, name) => {
+  cy.get('[name="email"]').type(email)
+  cy.get('.mb-3 > input').clear().type(name)
+  cy.get('.mb-3 + button').click()
+})
 
 /**
  * Adds two numbers.
@@ -50,7 +50,7 @@ Cypress.Commands.add("loginApp", (email, name) => {
  * // Return 10
  */
 export function add(a, b) {
-  return a + b;
+  return a + b
 }
 
 //  add(1, 2)         => 3
@@ -61,21 +61,21 @@ export function add(a, b) {
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //
 
-Cypress.Commands.add("logText", { prevSubject: true }, (subject) => {
-  const text = subject.text();
-  cy.log(text);
+Cypress.Commands.add('logText', { prevSubject: true }, (subject) => {
+  const text = subject.text()
+  cy.log(text)
 
-  return cy.wrap(subject);
-});
+  return cy.wrap(subject)
+})
 
 Cypress.Commands.add(
-  "haveText",
-  { prevSubject: "element" },
+  'haveText',
+  { prevSubject: 'element' },
   (subject, expectedText) => {
-    cy.wrap(subject).should("have.text", expectedText);
-    expect(subject).to.have.text(expectedText);
+    cy.wrap(subject).should('have.text', expectedText)
+    expect(subject).to.have.text(expectedText)
   }
-);
+)
 
 /**
  * Create a child custom command that will validate the attribute and the value of previous subject
@@ -86,16 +86,16 @@ Cypress.Commands.add(
  * If no value is provided, it checks only for the attribute's existence.
  */
 Cypress.Commands.add(
-  "assertAttribute",
+  'assertAttribute',
   { prevSubject: true },
   (subject, attribute, value = null) => {
     if (value === null) {
-      cy.wrap(subject).should("have.attr", attribute);
+      cy.wrap(subject).should('have.attr', attribute)
     } else {
-      cy.wrap(subject).should("have.attr", attribute, value);
+      cy.wrap(subject).should('have.attr', attribute, value)
     }
   }
-);
+)
 
 
 // cy.get('#main_heading').then((subject) => {

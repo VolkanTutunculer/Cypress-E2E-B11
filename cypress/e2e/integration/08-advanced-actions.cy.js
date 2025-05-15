@@ -2,13 +2,13 @@
 
 describe('Cypress Advanced Actions', () => {
   beforeEach(() => {
-    cy.visit("https://www.techglobal-training.com/frontend");
-    cy.contains(".card", "Actions").click();
-  });
+    cy.visit('https://www.techglobal-training.com/frontend')
+    cy.contains('.card', 'Actions').click()
+  })
 
   it('Type and clear actions', () => {
 
-    let query = 'Apple';
+    let query = 'Apple'
     
     cy.get('#input_box')
       // .should('exist') is useless since we have many other assertions
@@ -31,36 +31,36 @@ describe('Cypress Advanced Actions', () => {
   })
 
   it('Right-Click and Double-Click', () => {
-    cy.get('#right-click').rightclick();
+    cy.get('#right-click').rightclick()
     cy.get('#right_click_result')
       .should('be.visible')
-      .and('have.text', 'You right-clicked on a button!');
+      .and('have.text', 'You right-clicked on a button!')
 
-    cy.get('#double-click').dblclick();
+    cy.get('#double-click').dblclick()
     cy.get('#double_click_result')
       .should('be.visible')
-      .and('have.text', 'You double-clicked on a button!');
-  });
+      .and('have.text', 'You double-clicked on a button!')
+  })
 
   it('Drag and Drop', () => {
-    cy.get('#drag_element').drag('#drop_element'); // requires 4tw/cypress-drag-drop dependency
+    cy.get('#drag_element').drag('#drop_element') // requires 4tw/cypress-drag-drop dependency
     
     cy.get('#drag_and_drop_result')
       .should('be.visible')
       .and('have.text', 'An element dropped here!')
-  });
+  })
 
   it('Hover Over', () => {
     // cy.get('#dropdown-testing').trigger('mouseover'); // does not work and requires cypress-real-events dependency
-    cy.get('#dropdown-testing').realHover();
-    cy.get('#backend-option').click();
-    cy.url().should('include', 'backend');
+    cy.get('#dropdown-testing').realHover()
+    cy.get('#backend-option').click()
+    cy.url().should('include', 'backend')
 
     // cy.on() here is used to listen if we get any "uncaught:exception"
     // and ignore it by returning false
 
     cy.on('uncaught:exception', () => {
       return false
-    });
-  });
+    })
+  })
 })

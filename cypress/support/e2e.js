@@ -17,7 +17,7 @@
 import './commands'
 import '@4tw/cypress-drag-drop'
 import 'cypress-real-events'
-import 'cypress-mochawesome-reporter/register';
+import 'cypress-mochawesome-reporter/register'
 // import exec, { spawnSync } from 'child_process'
 // import spawn from 'child_process'
 
@@ -37,8 +37,8 @@ before(() => {
 })
 
 // after(() => {
-  // exec('node index.js')
-  // spawn('node index.js')
-  // cy.exec('node index.js')
-  // cy.exec('react stop')
+// exec('node index.js')
+// spawn('node index.js')
+// cy.exec('node index.js')
+// cy.exec('react stop')
 // })
