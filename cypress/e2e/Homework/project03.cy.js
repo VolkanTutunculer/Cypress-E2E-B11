@@ -228,7 +228,7 @@ describe("Cypress Homework 3", () => {
       .then(($book) => {
         expect($book.text()).to.include(writtenDate);
       });
-          cy.get(".ml-3")
+    cy.get(".ml-3")
       .should("be.visible")
       .then(($book) => {
         expect($book.text()).to.include(writtenFutureDate);
@@ -248,7 +248,7 @@ describe("Cypress Homework 3", () => {
 
     cy.contains("label", "To").parent().find("select").select("Texas");
 
-     cy.contains("label", "Depart")
+    cy.contains("label", "Depart")
       .parent()
       .find('input[placeholder="MM/DD/YY"]')
       .clear()
@@ -287,7 +287,7 @@ describe("Cypress Homework 3", () => {
           expect($book.text()).to.include(expectedText);
         });
       });
-          cy.get(".ml-3")
+    cy.get(".ml-3")
       .should("be.visible")
       .then(($book) => {
         expect($book.text()).to.include(writtenDate);
